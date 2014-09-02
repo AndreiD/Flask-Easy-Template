@@ -21,11 +21,11 @@ Save time on your initial setup. This is a skeleton app which includes the most 
 
 How to use it:
 
-git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name> or download the zip
-pip install -r requirements.txt
-edit the "config.py" with your settings. (Tested with yahoo mail -> working ok)
-in "run.py" edit the port of the app (Default: 1337)
-"python run.py" -> http://server_ip:1337
+- git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name> or download the zip
+- pip install -r requirements.txt
+- edit the `config.py` with your settings. (Tested with yahoo mail -> working ok)
+- in "run.py" edit the port of the app (Default: 1337)
+- `python run.py` -> http://server_ip:1337
 
 
 in /app/templates/base.html
