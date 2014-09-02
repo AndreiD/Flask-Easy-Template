@@ -4,9 +4,13 @@ Flask Easy-Template
 
 Save time on your initial setup. This is a skeleton app which includes the most important things you'll probably be using for most of your projects.
 
+
+
+
 ![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/pic1.jpg "How the app looks 1")
 
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/pic2.jpg "How the app looks 1")
+
+![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/pic2.jpg "How admin panel looks")
 
 
 - Latest bootstrap template, modernizer, jquery etc. latest, served from content delivery networks.
