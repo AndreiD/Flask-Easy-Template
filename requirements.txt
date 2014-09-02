@@ -1,0 +1,8 @@
+Flask
+Flask-SQLAlchemy
+SQLAlchemy
+Flask-Cache
+Flask-Mail
+Flask-Security
+Flask-WTF
+Flask-Restless
