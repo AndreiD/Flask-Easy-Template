@@ -50,3 +50,5 @@ an example with PAGINATION
 
 - a supervisord.conf [supervisor is used to monitor the web application and restart it, also starts the app in case you restart your server]
 - a simple nginx.conf
+
+Feedback is appreciated :)
