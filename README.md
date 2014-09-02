@@ -28,9 +28,8 @@ Save time on your initial setup. This is a skeleton app which includes the most 
 - `python run.py` -> http://server_ip:1337
 
 
-__/app/templates/base.html__
+optional edit `/app/templates/base.html`
 
-`
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 {% set bootstrap_version = '3.2.0' %}
@@ -38,7 +37,7 @@ __/app/templates/base.html__
 {% set modernizer_version = '2.8.2' %}
 {% set bootswatch_version = '3.2.0' %}
 {% set bootswatch_theme = 'slate' %}
-`
+
 
 In case a new version appears, and you want to use it. modify it. also you can chose a nice theme from http://bootswatch.com/
 
@@ -46,7 +45,7 @@ in __/app/models.py__ an example with "expenses list" is added.
 
 an example with PAGINATION
 
-Extras:
+##### Extras:
 
 - a supervisord.conf [supervisor is used to monitor the web application and restart it, also starts the app in case you restart your server]
 - a simple nginx.conf
