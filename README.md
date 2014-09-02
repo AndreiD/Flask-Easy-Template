@@ -31,7 +31,9 @@ Save time on your initial setup. This is a skeleton app which includes the most 
 optional edit `/app/templates/base.html`
 
 > <!DOCTYPE html>
+
 > <html lang="en" class="no-js">
+
 > {% set bootstrap_version = '3.2.0' %}
 > {% set jquery_version = '2.1.1' %}
 > {% set modernizer_version = '2.8.2' %}
