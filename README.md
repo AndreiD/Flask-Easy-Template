@@ -19,7 +19,7 @@ Save time on your initial setup. This is a skeleton app which includes the most 
 - REST API
 - Pagination
 
-How to use it:
+#### How to use it:
 
 - `git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name>` or download the zip
 - `pip install -r requirements.txt`
