@@ -38,11 +38,11 @@ def add_record():
             description = form.description.data
             color_code = form.color_code.data
 
-            logging.info("Adding " + title + " " + color_code)
+            logging.info("adding " + title + " " + color_code)
 
             new_expense.add_data(current_user.get_id(), title, description, color_code)
 
-            flash("expense added successfully", category="success")
+            flash("Expense added successfully", category="success")
 
     return render_template("add_record.html", form=form)
 
