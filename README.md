@@ -7,9 +7,9 @@ Flask Easy-Template
 
 ![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot1.jpg "How the app looks 1")
 
-You can change the theme just by replacing one word in the base.html 
-
 ![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot3.jpg "How the app looks like 2")
+
+You can change the theme just by replacing one word in the ***base.html*** 
 
 ![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot2.jpg "How admin panel looks")
 
