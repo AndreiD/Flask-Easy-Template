@@ -2,7 +2,7 @@ Flask Easy-Template
 ========================
 
 
-Save time on your initial setup. This is a skeleton app which includes the most important things you'll probably be using for most of your projects.
+### Save time on your initial setup. This is a skeleton app which includes the most important things you'll probably be using for most of your projects.
 
 
 
