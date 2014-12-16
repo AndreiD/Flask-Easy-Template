@@ -2,15 +2,16 @@ Flask Easy-Template
 ========================
 
 
-### Save time on your initial setup. This is a skeleton app which includes the most important things you'll probably be using for most of your projects.
+#### Save time on your initial setup. This is a template app that includes the most important things you'll be probably using for your flask projects.
 
 
+![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot1.jpg "How the app looks 1")
 
+You can change the theme just by replacing one word in the base.html 
 
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/pic1.jpg "How the app looks 1")
+![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot3.jpg "How the app looks like 2")
 
-
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/pic2.jpg "How admin panel looks")
+![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot2.jpg "How admin panel looks")
 
 
 - Latest bootstrap template, modernizer, jquery etc. latest, served from content delivery networks.
@@ -23,7 +24,7 @@ Flask Easy-Template
 
 - `git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name>` or download the zip
 - `pip install -r requirements.txt`
-- edit the `config.py` with your settings. (Tested with yahoo mail -> working ok)
+- edit the `config.py` with your settings. (Tested with yahoo mail SMTP -> working ok)
 - in **run.py** edit the port of the app (Default: 1337)
 - `python run.py` -> http://server_ip:1337
 

@@ -41,22 +41,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="user_agent" class="col-lg-4 control-label">Color Code</label>
-
-                            <div class="col-lg-6">
-                                {{ form.color_code (class="form-control") }}
-
-                                {% for error in form.errors.color_code %} <br/>
-
-                                    <div class="alert alert-danger" style="display: inline-block">
-                                        {{ error }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
                             <div class="col-lg-4  col-lg-offset-4">
 
                                 <button type="submit" class="btn btn-primary">add new expense</button>

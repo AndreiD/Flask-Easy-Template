@@ -11,7 +11,6 @@
             <th>User</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Color Code</th>
             <th>Created Date</th>
         </tr>
         </thead>
@@ -20,7 +19,6 @@
                 <td>{{ record.user_id }}</td>
                 <td>{{ record.title }}</td>
                 <td>{{ record.description }}</td>
-                <td style="background-color: {{ record.color_code }}">{{ record.color_code }}</td>
                 <td>{{ record.added_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
 
             </tr>

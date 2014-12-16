@@ -42,8 +42,9 @@ class User(db.Model, UserMixin):
     current_login_ip = db.Column(db.String(255))
     login_count = db.Column(db.Integer)
 
+
     # ------ this is One to Many Relationship in SQLAlchemy ---------
-    expenses = db.relationship('Expense', backref=db.backref('user'))
+    expenses = db.relationship('SampleTasksTable', backref=db.backref('user'))
 
     def __repr__(self):
         return '<models.User[email=%s]>' % self.email
@@ -56,30 +57,29 @@ user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 
 
 
-class Expense(db.Model):
-    __tablename__ = "expense"
+class SampleTasksTable(db.Model):
+    __tablename__ = "SampleTasksTable"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(255))
     description = db.Column(db.Text())
-    color_code = db.Column(db.String(10))
     added_time = db.Column(db.DateTime, default=datetime.datetime.now)
 
 
-    def add_data(self, user_id, title, description, color_code):
-        new_expense = Expense(user_id=user_id, title=title, description=description,color_code=color_code)
+    def add_data(self, user_id, title, description):
+        new_expense = SampleTasksTable(user_id=user_id, title=title, description=description)
         db.session.add(new_expense)
         db.session.commit()
 
     def list_all(self, page, LISTINGS_PER_PAGE):
-        return Expense.query.order_by(desc(Expense.added_time)).paginate(page, LISTINGS_PER_PAGE, False)
+        return SampleTasksTable.query.order_by(desc(SampleTasksTable.added_time)).paginate(page, LISTINGS_PER_PAGE, False)
 
 
     def __str__(self):
         return self.title
 
     def __repr__(self):
-        return '<Expense %r>' % (self.id)
+        return '<SampleTasksTable %r>' % (self.id)
 
 
 

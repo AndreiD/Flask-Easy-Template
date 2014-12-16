@@ -18,9 +18,9 @@ security = Security(app, user_datastore)
 @app.route('/index')
 @app.route('/index/<int:page>')
 def index(page=1):
-    m_expense = Expense()
+    m_tasks = SampleTasksTable()
 
-    list_records = m_expense.list_all(page, app.config['LISTINGS_PER_PAGE'])
+    list_records = m_tasks.list_all(page, app.config['LISTINGS_PER_PAGE'])
 
     return render_template("index.html", list_records=list_records)
 
@@ -28,19 +28,18 @@ def index(page=1):
 @app.route('/add_record', methods=['GET', 'POST'])
 @login_required
 def add_record():
-    form = ExpensesInfoForm(request.form)
+    form = TasksAddForm(request.form)
 
     if request.method == 'POST':
         if form.validate():
-            new_expense = Expense()
+            new_expense = SampleTasksTable()
 
             title = form.title.data
             description = form.description.data
-            color_code = form.color_code.data
 
-            logging.info("adding " + title + " " + color_code)
+            logging.info("adding " + title)
 
-            new_expense.add_data(current_user.get_id(), title, description, color_code)
+            new_expense.add_data(current_user.get_id(), title, description)
 
             flash("Expense added successfully", category="success")
 
@@ -51,7 +50,6 @@ def add_record():
 # --------- Secret page example, available only to admin -------------
 @app.route('/secret')
 @roles_required('admin')
-@login_required
 def secret():
     return render_template('secret.html')
 
@@ -96,7 +94,7 @@ api_manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 # here we make the API available just to user that created it.
 # this gets called before the request is processed and send
 def get_single_preprocessor(instance_id=None, **kw):
-    instance_user_id = Expense.query.get(instance_id)
+    instance_user_id = SampleTasksTable.query.get(instance_id)
     if instance_user_id.user_id and current_user.get_id():
         if int(instance_user_id.user_id) != int(current_user.get_id()):
             raise flask.ext.restless.ProcessingException(description='Not Authorized', code=401)
@@ -105,10 +103,10 @@ def get_single_preprocessor(instance_id=None, **kw):
 
 
 blueprint = api_manager.create_api(
-    Expense,
+    SampleTasksTable,
     methods=['GET', 'POST', 'DELETE', 'PATCH'],
     url_prefix='/api/v1',
-    collection_name='expenses',
+    collection_name='tasks',
     results_per_page=50,
     max_results_per_page=50,
     exclude_columns=['user.current_login_ip', 'user.password', 'user.current_login_at', 'user.confirmed_at', 'user.last_login_at', 'user.login_count', 'user.last_login_ip'],
@@ -139,14 +137,14 @@ class MyAdminIndexView(AdminIndexView):
         return self.render('admin/index.html')
 
 
-class ExpenseAdminView(MyModelView):
+class TasksAdminView(MyModelView):
     can_create = True
 
     def is_accessible(self):
         return current_user.has_role('admin')
 
     def __init__(self, session, **kwargs):
-        super(ExpenseAdminView, self).__init__(Expense, session, **kwargs)
+        super(TasksAdminView, self).__init__(SampleTasksTable, session, **kwargs)
 
 
 class UserAdminView(MyModelView):
@@ -168,7 +166,7 @@ class RoleView(MyModelView):
 
 
 admin = Admin(app, 'Flask-Easy Admin', index_view=MyAdminIndexView())
-admin.add_view(ExpenseAdminView(db.session))
+admin.add_view(TasksAdminView(db.session))
 admin.add_view(UserAdminView(db.session))
 admin.add_view(RoleView(db.session))
 admin.add_link(base.MenuLink('Web Home', endpoint="index"))
