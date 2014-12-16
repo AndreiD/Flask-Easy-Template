@@ -14,11 +14,14 @@ You can change the theme just by replacing one word in ***base.html***
 ![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot2.jpg "How admin panel looks")
 
 
+### Features:
+
 - Latest bootstrap template, modernizer, jquery etc. latest, served from content delivery networks.
 - User Registry, Login & Forgot Password
 - Secured Admin Panel
 - REST API
 - Pagination
+- A sample tasks database with SQLALchemy
 
 #### How to use it:
 
@@ -38,7 +41,6 @@ optional edit `/app/templates/base.html`
 > {% set modernizer_version = '2.8.2' %}
 > {% set bootswatch_version = '3.2.0' %}
 > {% set bootswatch_theme = 'slate' %}
-
 
 
 In case a new version appears, and you want to use it. modify it. also you can chose a nice theme from http://bootswatch.com/
