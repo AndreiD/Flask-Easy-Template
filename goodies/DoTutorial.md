@@ -15,20 +15,28 @@ The Protein interaction networks using Graph Databases
 
 We need to install first java.
 
+~~~~
 sudo apt-get update
+~~~~
 
 Then, check if Java is not already installed:
 
+~~~~
 java -version
+~~~~
 
 if it's not installed then:
 
+~~~~
 sudo apt-get install openjdk-7-jdk
+~~~~
 
 
 download the "Linux and any other *NIX system" archive from  [orientdb download](http://www.orientechnologies.com/download/) and extract it into a directory. We'll use /home/orientdb_17
  
+~~~~
 tar xvfz archivee.tar
+~~~~
 
 ## Configuring OrientDB
 
