@@ -71,7 +71,7 @@ Notice that in the /bin directory there's also a **shutdown.sh** script. You can
 
 You can go now to **http://your_droplet_ip:2480** and you should see this screen
 
-![screen server](graph1.jpg "screen server") 
+![screen server](https://raw.githubusercontent.com/AndreiD/Flask-Easy-Template/master/goodies/graph1.jpg "screen server") 
 
 Login and select the GreatfulDeadConcerts database.
 
@@ -122,7 +122,7 @@ The first tab **BROWSE** it's where you type the queries
 SELECT count(*) FROM V WHERE type="artist"
 ~~~~
 
-![screen server](graph2.jpg "screen server") 
+![screen server](https://raw.githubusercontent.com/AndreiD/Flask-Easy-Template/master/goodies/graph2.jpg "screen server") 
 
 TODO: link them in flask
  
