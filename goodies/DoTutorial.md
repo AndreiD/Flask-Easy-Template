@@ -42,26 +42,34 @@ tar xvfz archivee.tar
 
 Setup a user and a password for the admin of OrientDB
 
+~~~~
 sudo nano /home/orientdb_17/config/orientdb_config.txt
+~~~~
 
 go to Users section, delete the previous entries, and write:
 
+~~~~
 <user name="root" resources="*" password="your_password_here"/>
+~~~~
 
 so it will look like this:
 
+~~~~
 <users>
 <user name="root" resources="*" password="your_password_here"/>
 </users>
+~~~~
 
 finally, start Orientdb by
 
+~~~~
 sudo /home/orientdb_17/bin/server.sh &
+~~~~
 
-Notice that in the /bin directory there's also a shutdown.sh script. You can use it to terminate the process when you want.
+Notice that in the /bin directory there's also a **shutdown.sh** script. You can use it to terminate the process when you want.
 
 
-You can go now to http://your_droplet_ip:2480 and you should see this screen
+You can go now to **http://your_droplet_ip:2480** and you should see this screen
 
 ![screen server](graph1.jpg "screen server") 
 
@@ -70,23 +78,28 @@ Login and select the GreatfulDeadConcerts database.
 
 ## Install and configure Flask 
 
-
+~~~~
 sudo apt-get install python-pip python-dev build-essential
 sudo pip install Flask
+~~~~
 
-and for the connection to OrientDB we'll use pyorinet [PyOrient Github](https://github.com/mogui/pyorient)
+and for the connection to OrientDB we'll use **pyorinent** [PyOrient Github](https://github.com/mogui/pyorient)
 
+~~~~
 pip install pyorient
+~~~~
 
 Working with pyorinent is easy, you can read more about it here [PyOrient Github](https://github.com/mogui/pyorient)
 
-Create a new directory in /home/
+Create a new directory in **/home**
 
+~~~~
 sudo mkdir /home/my_flask_project
+~~~~
 
-and inside create a new file application.py
+and inside create a new file **application.py**
 
-
+~~~~
 from flask import Flask
 app = Flask(__name__)
 
@@ -96,16 +109,18 @@ def index():
 
 if __name__ == '__main__':
     app.run()
-
+~~~~
 
 ## Flask and OrientDb Interaction
 
 ### Simple queries
 
 Getting the count of the artists in the sample database.
-The first tab "BROWSE" it's where you type the queries
+The first tab **BROWSE** it's where you type the queries
 
+~~~~
 SELECT count(*) FROM V WHERE type="artist"
+~~~~
 
 ![screen server](graph2.jpg "screen server") 
 
@@ -113,7 +128,7 @@ TODO: link them in flask
  
 ### more complex queries
 
-- find who wrote the songs that artist "Garcia" sung
+- find who wrote the songs that artist **Garcia** sung
 
 TODO: continue
 
