@@ -2,10 +2,11 @@
 
 ### Introduction
 
-More and more people move away from using the relational databases as datastore. If you use relational database, SQLAlchemy is a great choice in Flask, if not, then OrientDB is a very good choice. Being OpenSource and having an SQL-like syntax are two very good reasons to choose it
- but if you'd like to learn more checkout http://www.orientechnologies.com/why-orientdb/ 
+More and more people move away from using the relational databases as datastore. If you use relational database, SQLAlchemy is a great choice in Flask, if not, then OrientDB is a very good choice. 
 
-This tutorial is showing you how to install OrientDb and link it to simple Flask Application. For users that want more, there's a section how to implement redis on top of everything to speed things up.
+Being OpenSource and having an SQL-like syntax are two very good reasons to choose it but if you'd like to learn more checkout http://www.orientechnologies.com/why-orientdb/ 
+
+This tutorial is showing you **how to install OrientDb and link it to simple Flask Application**. For users that want more, there's a section how to implement redis on top of everything to speed things up.
 
 The Protein interaction networks using Graph Databases
 ![graph databases](http://upload.wikimedia.org/wikipedia/commons/b/b4/The_protein_interaction_network_of_Treponema_pallidum.png "graph databases") 
