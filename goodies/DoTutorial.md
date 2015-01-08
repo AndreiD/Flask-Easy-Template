@@ -35,7 +35,7 @@ Setup a user and a password for the admin of OrientDB
 
 sudo nano /home/orientdb_17/config/orientdb_config.txt
 
-go to Users section, delete the previous entries, and write
+go to Users section, delete the previous entries, and write:
 
 <user name="root" resources="*" password="your_password_here"/>
 
