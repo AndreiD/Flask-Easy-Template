@@ -29,7 +29,7 @@ You can change the theme just by replacing one word in ***base.html***
 - `pip install -r requirements.txt`
 - `python run.py` -> http://server_ip:5000
 
-**[optional steps]**
+#### Optional steps
 
 - check the `config.py` (Tested with yahoo mail SMTP and Sendgrid SMTP -> working ok!)
 - in **run.py** edit the port of the app (Default: 5000)
