@@ -8,7 +8,7 @@ class Config(object):
     TESTING = False
     SQLALCHEMY_DATABASE_URI = ''
     APP_NAME = 'Flask Easy-Template'
-    SECRET_KEY = 'thisisaveryhardsecret!1234!1234'
+    SECRET_KEY = 'write-a-secret-string-here!@#$'
     LISTINGS_PER_PAGE = 100
 
     SECURITY_REGISTERABLE = True
@@ -18,6 +18,7 @@ class Config(object):
     SECURITY_PASSWORD_SALT = 'add_salt_123_hard_one'
     SECURITY_CONFIRMABLE = True
 
+    #-- you can also use Sendgrid.com for 200 email per day (free)
     MAIL_SERVER = 'smtp.mail.yahoo.com'
     MAIL_PORT = 465
     MAIL_USE_SSL = True
