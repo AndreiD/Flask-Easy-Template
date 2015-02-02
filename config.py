@@ -9,7 +9,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = ''
     APP_NAME = 'Flask Easy-Template'
     SECRET_KEY = 'write-a-secret-string-here!@#$'
-    LISTINGS_PER_PAGE = 100
+    LISTINGS_PER_PAGE = 5
 
     SECURITY_REGISTERABLE = True
     SECURITY_RECOVERABLE = True
@@ -28,6 +28,8 @@ class Config(object):
     DEFAULT_MAIL_SENDER = 'user@yahoo.com'
     SECURITY_EMAIL_SENDER = 'user@yahoo.com'
 
+
+#---- for a list of supported databases in sqlalchemy see http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql://user:pass@server_ip:server_port/db_name'

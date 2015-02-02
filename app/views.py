@@ -5,7 +5,7 @@ from flask.ext.security import Security, login_required, logout_user, roles_requ
 from flask.ext.admin import Admin, expose, AdminIndexView, base
 from flask.ext.admin.contrib.sqla import ModelView
 import flask.ext.restless
-
+from app import app
 from models import *
 
 from forms import *
@@ -61,7 +61,7 @@ def log_out():
     return redirect(request.args.get('next') or '/')
 
 
-# Executes before the first request is processed.
+# Executes before the first request is processed. You might want to delete this after it's done to keep things clean
 @app.before_first_request
 def before_first_request():
     logging.info("-------------------- initializing everything ---------------------")

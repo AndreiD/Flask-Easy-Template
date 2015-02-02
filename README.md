@@ -24,14 +24,13 @@ You can change the theme just by replacing one word in ***base.html***
 - A sample tasks database with SQLALchemy
 
 
-
 #### How to use it:
 
 - `git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name>` or download the zip
 - `pip install -r requirements.txt`
 - edit the `config.py` with your settings. (Tested with yahoo mail SMTP -> working ok)
-- in **run.py** edit the port of the app (Default: 1337)
-- `python run.py` -> http://server_ip:1337
+- in **run.py** edit the port of the app (Default: 5000)
+- `python run.py` -> http://server_ip:5000
 
 optional edit `/app/templates/base.html`
 
