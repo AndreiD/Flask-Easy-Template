@@ -33,7 +33,6 @@ You can change the theme just by replacing one word in ***base.html***
 - in **run.py** edit the port of the app (Default: 1337)
 - `python run.py` -> http://server_ip:1337
 
-
 optional edit `/app/templates/base.html`
 
 > <!DOCTYPE html>
