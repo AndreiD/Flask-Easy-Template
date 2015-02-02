@@ -1,11 +1,8 @@
-import logging
 
 from flask import render_template, request, redirect, flash
 from flask.ext.security import Security, login_required, logout_user, roles_required, current_user, utils
 from flask.ext.admin import Admin, expose, AdminIndexView, base
 from flask.ext.admin.contrib.sqla import ModelView
-import flask.ext.restless
-from app import app
 from models import *
 
 from forms import *
@@ -83,40 +80,6 @@ def before_first_request():
     user_datastore.add_role_to_user('me@me.com', 'admin')
     user_datastore.add_role_to_user('enduser@enduser.com', 'end-user')
     db.session.commit()
-
-
-# -------------------------- REST API PART ------------------------------------
-# --------- FLASK RESTLESS has a very nice documentation. read more here -> https://flask-restless.readthedocs.org/en/latest/index.html
-
-api_manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
-
-
-# here we make the API available just to user that created it.
-# this gets called before the request is processed and send
-def get_single_preprocessor(instance_id=None, **kw):
-    instance_user_id = SampleTasksTable.query.get(instance_id)
-    if instance_user_id.user_id and current_user.get_id():
-        if int(instance_user_id.user_id) != int(current_user.get_id()):
-            raise flask.ext.restless.ProcessingException(description='Not Authorized', code=401)
-    else:
-        raise flask.ext.restless.ProcessingException(description='Not Authorized', code=401)
-
-
-blueprint = api_manager.create_api(
-    SampleTasksTable,
-    methods=['GET', 'POST', 'DELETE', 'PATCH'],
-    url_prefix='/api/v1',
-    collection_name='tasks',
-    results_per_page=50,
-    max_results_per_page=50,
-    exclude_columns=['user.current_login_ip', 'user.password', 'user.current_login_at', 'user.confirmed_at', 'user.last_login_at', 'user.login_count', 'user.last_login_ip'],
-    allow_patch_many=False,
-    preprocessors={
-        'GET_SINGLE': [get_single_preprocessor]
-    }
-)
-# --------------------------  END REST API PART ------------------------------------
-
 
 
 # -------------------------- ADMIN PART ------------------------------------
