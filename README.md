@@ -28,7 +28,9 @@ You can change the theme just by replacing one word in ***base.html***
 - `git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name>` or download the zip
 - `pip install -r requirements.txt`
 - `python run.py` -> http://server_ip:5000
+
 **[optional steps]**
+
 - check the `config.py` (Tested with yahoo mail SMTP and Sendgrid SMTP -> working ok!)
 - in **run.py** edit the port of the app (Default: 5000)
 
