@@ -27,9 +27,11 @@ You can change the theme just by replacing one word in ***base.html***
 
 - `git clone https://github.com/AndreiD/Flask-Easy-Template.git <project_name>` or download the zip
 - `pip install -r requirements.txt`
-- check the `config.py` (Tested with yahoo mail SMTP -> working ok)
-- in **run.py** edit the port of the app (Default: 5000)
 - `python run.py` -> http://server_ip:5000
+**[optional steps]**
+- check the `config.py` (Tested with yahoo mail SMTP and Sendgrid SMTP -> working ok!)
+- in **run.py** edit the port of the app (Default: 5000)
+
 
 optional edit `/app/templates/base.html`
 
@@ -61,6 +63,7 @@ Creating a bookmark for easier access
 
 - a supervisord.conf [supervisor is used to monitor the web application and restart it, also starts the app in case you restart your server]
 - a simple nginx.conf
+- after you go into production, uncomment the settings from run.py for the best performance
 
 Your Feedback is appreciated :)
 
