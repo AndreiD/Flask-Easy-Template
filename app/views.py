@@ -1,14 +1,12 @@
-import logging
 
-from flask import render_template, request, redirect, flash
+from flask import render_template, request, redirect, flash, current_app
 from flask.ext.security import Security, login_required, logout_user, roles_required, current_user, utils
 from flask.ext.admin import Admin, expose, AdminIndexView, base
 from flask.ext.admin.contrib.sqla import ModelView
-import flask.ext.restless
-
 from models import *
-
 from forms import *
+import sendgrid
+from decorators import threaded_async
 
 
 security = Security(app, user_datastore)
@@ -61,7 +59,7 @@ def log_out():
     return redirect(request.args.get('next') or '/')
 
 
-# Executes before the first request is processed.
+# Executes before the first request is processed. You might want to delete this after it's done to keep things clean
 @app.before_first_request
 def before_first_request():
     logging.info("-------------------- initializing everything ---------------------")
@@ -85,39 +83,45 @@ def before_first_request():
     db.session.commit()
 
 
-# -------------------------- REST API PART ------------------------------------
-# --------- FLASK RESTLESS has a very nice documentation. read more here -> https://flask-restless.readthedocs.org/en/latest/index.html
-
-api_manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 
 
-# here we make the API available just to user that created it.
-# this gets called before the request is processed and send
-def get_single_preprocessor(instance_id=None, **kw):
-    instance_user_id = SampleTasksTable.query.get(instance_id)
-    if instance_user_id.user_id and current_user.get_id():
-        if int(instance_user_id.user_id) != int(current_user.get_id()):
-            raise flask.ext.restless.ProcessingException(description='Not Authorized', code=401)
-    else:
-        raise flask.ext.restless.ProcessingException(description='Not Authorized', code=401)
+@threaded_async
+def send_email(app, to, subject, body):
+    with app.app_context():
+        sg = sendgrid.SendGridClient('origof', 'parola123')
+        message = sendgrid.Mail()
+        message.add_to(to)
+        message.set_subject(subject)
+        message.set_html(body)
+        message.set_from('FlaskShop No-Reply <noreplay@flaskshop.com>')
+        try:
+            status, msg = sg.send(message)
+            print("Status: " + str(status) + " Message: " + str(msg))
+            if status == 200:
+                return True
+        except Exception, ex:
+            print("------------ ERROR SENDING EMAIL ------------" + str(ex.message))
+    return False
 
 
-blueprint = api_manager.create_api(
-    SampleTasksTable,
-    methods=['GET', 'POST', 'DELETE', 'PATCH'],
-    url_prefix='/api/v1',
-    collection_name='tasks',
-    results_per_page=50,
-    max_results_per_page=50,
-    exclude_columns=['user.current_login_ip', 'user.password', 'user.current_login_at', 'user.confirmed_at', 'user.last_login_at', 'user.login_count', 'user.last_login_ip'],
-    allow_patch_many=False,
-    preprocessors={
-        'GET_SINGLE': [get_single_preprocessor]
-    }
-)
-# --------------------------  END REST API PART ------------------------------------
 
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    recaptcha = current_app.config['RECAPTCHA_SITE_KEY']
+    email_sent = False
 
+    if request.method == 'POST':
+        email = request.form['email']
+        name = request.form['name']
+        message = request.form['message']
+        recaptcha_response = request.form['g-recaptcha-response']
+
+        # TODO: as a homework for you: check recaptcha & make emails work
+        #send_email(app, to= current_app.config['ADMIN_EMAIL'], subject="Contact Form Flask Shop", body=email + " " + name + " " + message)
+
+        email_sent = True
+
+    return render_template("contact.html", RECAPTCHA_SITE_KEY=recaptcha, email_sent = email_sent)
 
 # -------------------------- ADMIN PART ------------------------------------
 # --------- FLASK ADMIN has a very nice documentation. read more here -> http://flask-admin.readthedocs.org/en/latest/
