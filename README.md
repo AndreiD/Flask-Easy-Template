@@ -19,9 +19,9 @@ You can change the theme just by replacing one word in ***base.html***
 - Latest bootstrap template, modernizer, jquery etc. latest, served from content delivery networks.
 - User Registry, Login & Forgot Password
 - Secured Admin Panel
-- Pagination
-- A sample tasks database with SQLALchemy
-
+- Email integration with SendGrid & a contact form with recaptcha
+- A sample tasks database with SQLALchemy with Pagination
+- Colored terminal logging utilities, view memory usage, etc.
 
 #### How to use it:
 
@@ -29,28 +29,23 @@ You can change the theme just by replacing one word in ***base.html***
 - `pip install -r requirements.txt`
 - `python run.py` -> http://server_ip:5000
 
-##### Optional steps
+##### Things to do after:
 
-- check the `config.py` (Tested with yahoo mail SMTP and Sendgrid SMTP -> working ok!)
+- check the `config.py`
 - in **run.py** edit the port of the app (Default: 5000)
 
 
-optional edit `/app/templates/base.html`
+For templates edit `/app/templates/base.html`
 
 > <!DOCTYPE html>
-> <html lang="en" class="no-js">
-> {% set bootstrap_version = '3.3.2' %}
+> {% set bootstrap_version = '3.3.4' %}
 > {% set jquery_version = '2.1.3' %}
 > {% set modernizer_version = '2.8.3' %}
 > {% set bootswatch_version = '3.3.2' %}
 > {% set bootswatch_theme = 'slate' %}
 
 
-In case a new version appears, and you want to use it. modify it. also you can chose a nice theme from http://bootswatch.com/
-
-in __/app/models.py__ an example with "expenses list" is added.
-
-an example with PAGINATION
+In case you don't like the "slate" theme, you can chose a nice theme from http://bootswatch.com/ and just replace the theme name
 
 #### About Stars
 
@@ -73,4 +68,5 @@ Your Feedback is appreciated :)
 
 newest first:
 
+- added sendgrid support, contact page, fixed the mobile devices navigation, added more stuff into the *goodies* folder
 - updated to latest bootstrap, jquery, modernizer, bootswatch. Fixed the example sample
