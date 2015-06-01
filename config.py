@@ -4,11 +4,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
+    ADMIN_EMAIL = "your_email@gmail.com"
+
     DEBUG = False
     TESTING = False
     SQLALCHEMY_DATABASE_URI = ''
     APP_NAME = 'Flask Easy-Template'
-    SECRET_KEY = 'write-a-secret-string-here!@#$'
+    SECRET_KEY = 'write-a-secret-string-here'
     LISTINGS_PER_PAGE = 5
 
     SECURITY_REGISTERABLE = True
@@ -18,18 +20,22 @@ class Config(object):
     SECURITY_PASSWORD_SALT = 'add_salt_123_hard_one'
     SECURITY_CONFIRMABLE = True
 
-    #-- you can also use Sendgrid.com for 200 email per day (free)
-    MAIL_SERVER = 'smtp.mail.yahoo.com'
-    MAIL_PORT = 465
-    MAIL_USE_SSL = True
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = 'user@yahoo.com'
+
+    # -- you can use Sendgrid.com (for 200 free emails per day)
+    MAIL_SERVER = 'smtp.sendgrid.net'
+    MAIL_PORT = 587
+    MAIL_USE_SSL = False
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'username'
     MAIL_PASSWORD = 'password'
-    DEFAULT_MAIL_SENDER = 'user@yahoo.com'
-    SECURITY_EMAIL_SENDER = 'user@yahoo.com'
+    DEFAULT_MAIL_SENDER = 'notifications@your_website.com'
+    SECURITY_EMAIL_SENDER = 'notifications@your_website.com'
+
+    RECAPTCHA_SITE_KEY = "6Ldzx_Exxxxxxxxxxxxxxxxxxxxxxx"
+    RECAPTCHA_SECRET = "6Ldzx_ESAAAxxxxxxxxxxxxxxxxxxxxxxxx"
 
 
-#---- for a list of supported databases in sqlalchemy see http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html
+# ---- for a list of supported databases in sqlalchemy see http://docs.sqlalchemy.org/en/rel_0_9/core/engines.html
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql://user:pass@server_ip:server_port/db_name'

@@ -1,11 +1,12 @@
 
-from flask import render_template, request, redirect, flash
+from flask import render_template, request, redirect, flash, current_app
 from flask.ext.security import Security, login_required, logout_user, roles_required, current_user, utils
 from flask.ext.admin import Admin, expose, AdminIndexView, base
 from flask.ext.admin.contrib.sqla import ModelView
 from models import *
-
 from forms import *
+import sendgrid
+from decorators import threaded_async
 
 
 security = Security(app, user_datastore)
@@ -81,6 +82,46 @@ def before_first_request():
     user_datastore.add_role_to_user('enduser@enduser.com', 'end-user')
     db.session.commit()
 
+
+
+
+@threaded_async
+def send_email(app, to, subject, body):
+    with app.app_context():
+        sg = sendgrid.SendGridClient('origof', 'parola123')
+        message = sendgrid.Mail()
+        message.add_to(to)
+        message.set_subject(subject)
+        message.set_html(body)
+        message.set_from('FlaskShop No-Reply <noreplay@flaskshop.com>')
+        try:
+            status, msg = sg.send(message)
+            print("Status: " + str(status) + " Message: " + str(msg))
+            if status == 200:
+                return True
+        except Exception, ex:
+            print("------------ ERROR SENDING EMAIL ------------" + str(ex.message))
+    return False
+
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    recaptcha = current_app.config['RECAPTCHA_SITE_KEY']
+    email_sent = False
+
+    if request.method == 'POST':
+        email = request.form['email']
+        name = request.form['name']
+        message = request.form['message']
+        recaptcha_response = request.form['g-recaptcha-response']
+
+        # TODO: as a homework for you: check recaptcha & make emails work
+        #send_email(app, to= current_app.config['ADMIN_EMAIL'], subject="Contact Form Flask Shop", body=email + " " + name + " " + message)
+
+        email_sent = True
+
+    return render_template("contact.html", RECAPTCHA_SITE_KEY=recaptcha, email_sent = email_sent)
 
 # -------------------------- ADMIN PART ------------------------------------
 # --------- FLASK ADMIN has a very nice documentation. read more here -> http://flask-admin.readthedocs.org/en/latest/
