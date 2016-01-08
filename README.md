@@ -5,23 +5,16 @@ Flask Easy-Template
 #### Save time on your initial setup. This is a template app that includes the most important things you'll be probably using for your flask projects.
 
 
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot1.jpg "How the app looks 1")
-
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot3.jpg "How the app looks like 2")
-
 You can change the theme just by replacing one word in ***base.html*** 
-
-![alt text](https://github.com/AndreiD/Flask-Easy-Template/blob/master/app/static/img/screenshot2.jpg "How admin panel looks")
 
 
 ### Features:
 
 - Latest bootstrap template, modernizer, jquery etc. latest, served from content delivery networks.
 - User Registry, Login & Forgot Password
-- Secured Admin Panel
 - Email integration with SendGrid & a contact form with recaptcha
 - A sample tasks database with SQLALchemy with Pagination
-- Colored terminal logging utilities, view memory usage, etc.
+
 
 #### How to use it:
 
@@ -64,13 +57,7 @@ Creating a bookmark for easier access
 
 Your Feedback is appreciated :)
 
-##### Last Updates:
 
-newest first:
-
-- added sendgrid support, contact page, fixed the mobile devices navigation, added more stuff into the *goodies* folder
-- updated to latest bootstrap, jquery, modernizer, bootswatch. Fixed the example sample
-- 
 ##### License: Apache 2.0
 
 ~~~~
