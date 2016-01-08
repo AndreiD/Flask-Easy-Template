@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+
+{% set bootstrap_version = '3.3.4' %}
+{% set jquery_version = '2.1.3' %}
+{% set modernizer_version = '2.8.3' %}
+{% set bootswatch_version = '3.3.2' %}
+{% set bootswatch_theme = 'slate' %}
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <title>{% block title%}Flask-Easy Template{% endblock %}</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/{{ bootstrap_version }}/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="//netdna.bootstrapcdn.com/bootswatch/{{ bootswatch_version }}/{{ bootswatch_theme }}/bootstrap.min.css" rel="stylesheet" >
+
+    <link href="/static/css/main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    {% block style_block %}{# page-specific CSS #}{% endblock %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/{{ modernizer_version }}/modernizr.min.js"></script>{# Modernizr must be here, above body tag. #}
+    {% block head_script %}{# defer-incapable JS block #}{% endblock %}
+</head>
+<body>
+
+        {% include 'includes/nav.html' %} {# pull in navbar #}
+
+    <div class="container" id="maincontent">
+        {% include 'includes/flash_message.html' %} {# page-level feedback notices #}
+        <div id="body_content">
+            {% block content %}{# main content area #}{% endblock %}
+        </div>
+    </div><!-- /container -->
+    <footer>
+        <div id="footer" class="container">
+            {% block footer %}{% endblock %}
+        </div><!-- /footer -->
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{ jquery_version }}/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/{{ bootstrap_version }}/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    {% block tail_script %}{# defer-capable JS block #}{% endblock %}
+    {{ profiler_includes|safe }}
+</body>
+</html>

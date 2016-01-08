@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="well bs-component">
+                <form class="form-horizontal" method="post" action="">
+                    <fieldset>
+                        <legend>Add new expense</legend>
+                        <div class="form-group">
+                            <label for="user_ip" class="col-lg-4 control-label">Title</label>
+
+                            <div class="col-lg-6">
+                                {{ form.title (class="form-control") }}
+
+                                {% for error in form.errors.title %} <br/>
+
+                                    <div class="alert alert-danger" style="display: inline-block">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_agent" class="col-lg-4 control-label">Description</label>
+
+                            <div class="col-lg-6">
+                                {{ form.description (class="form-control") }}
+
+                                {% for error in form.errors.description %} <br/>
+
+                                    <div class="alert alert-danger" style="display: inline-block">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-4  col-lg-offset-4">
+
+                                <button type="submit" class="btn btn-primary">add new record</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+
+{% endblock content %}
