@@ -88,7 +88,7 @@ def before_first_request():
 @threaded_async
 def send_email(app, to, subject, body):
     with app.app_context():
-        sg = sendgrid.SendGridClient('origof', 'parola123')
+        sg = sendgrid.SendGridClient('user', 'password')
         message = sendgrid.Mail()
         message.add_to(to)
         message.set_subject(subject)
