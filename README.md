@@ -40,6 +40,9 @@ For templates edit `/app/templates/base.html`
 
 In case you don't like the "slate" theme, you can chose a nice theme from http://bootswatch.com/ and just replace the theme name
 
+Step 2. ???
+Step 3. PROFIT
+
 #### About Stars
 
 Starring a repository allows you to keep track of projects that you find interesting, even if you aren't associated with the project.
