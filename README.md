@@ -60,6 +60,43 @@ Creating a bookmark for easier access
 
 Your Feedback is appreciated :)
 
+##### TROUBLESHOOTS FOR BEGINNERS :
+
+    - READ FIRST : About Python 2 and 3 compatibility
+    Some scripts and modules versions required here are written in python 2 and not ready yet for python 3 , 
+    so it is recommended to download and install both interpreters python 2 and also python 3 (for windows users don't forget to add their folder paths also in your environment variables)
+    Then when calling python scripts in version 2 or 3 anyway (example with the package manager script PIP), you can run default python command like :
+        "python -m pip install ..." or "pip install ..."
+    To call only python 3 scripts choose  this  instead :
+        "py -m pip install ..." or "pip3 install ..."
+
+
+    - Error parsing in requirements.txt ?
+        Run instead this compatible formatted file :
+            python -m pip install -r requirements-pip2.txt    
+        or convert first your requirements.txt to a python 2 pip2 compatible format with this command :
+            python -m pip list --format=freeze > requirements.txt
+
+
+    - Error install on Proxytype : SyntaxError like Missing parentheses in call to 'print' ?
+        the print function requires parentheses in Python 3 but not in Python 2 which means that the extension that you are trying to install is not yet compatible with python 3
+        This is why it is recommended to install python 3 and python 2 by default.
+        So run instead this compatible command for python 2 extensions (after installing python 2 if not got it yet) :
+            python -m pip install -r requirements-pip2.txt
+            or python -m pip install ...
+
+
+    - Error install module Pycrypto : microsoft visual c++ compiler for python 2.7  is required ?
+        download and install microsoft visual c++ compiler for python 2.7 here : https://www.microsoft.com/en-us/download/details.aspx?id=44266
+
+
+    - Error Tornado module not found ? 
+        it is a problem when installing modules like tornado in a multiple python interpreters environment 
+        So run instead this common command python which precize by default  the python 2 version 
+            python -m pip install -r requirements-pip2.txt
+            or python -m pip install ...
+            or python run.py
+
 
 ##### License: Apache 2.0
 

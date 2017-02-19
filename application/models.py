@@ -23,35 +23,35 @@ class SampleTable(db.Model):
         return aux
 
 
-def add_data(self, title, description):
-    new_record = SampleTable(title=title, description=description)
-    db.session.add(new_record)
-    db.session.commit()
+    def add_data(self, title, description):
+        new_record = SampleTable(title=title, description=description)
+        db.session.add(new_record)
+        db.session.commit()
 
 
-def list_all(self, page, LISTINGS_PER_PAGE):
-    return SampleTable.query.order_by(desc(SampleTable.added_time)).paginate(page, LISTINGS_PER_PAGE, False)
+    def list_all(self, page, LISTINGS_PER_PAGE):
+        return SampleTable.query.order_by(desc(SampleTable.added_time)).paginate(page, LISTINGS_PER_PAGE, False)
 
 
-# ------ Delete them if you don't plan to use them ----------
+    # ------ Delete them if you don't plan to use them ----------
 
-def benchmark_searchspeed(self):
-    # my very stupid benchmark
-    records = SampleTable.query.filter(
-            or_(SampleTable.description.like('%ab%'), SampleTable.description.like('%10%'))).order_by(
-            desc(SampleTable.added_time)).limit(500)
-    output = list()
-    for record in records:
-        second = SampleTable.query.filter(SampleTable.description.contains(record.title[0:1])).first()
-        if second:
-            aux = dict()
-            aux['id'] = second.id
-            aux['title'] = second.title
-            aux['description'] = second.description
-            aux['added_time'] = second.added_time
-            output.append(aux)
-    return output
+    def benchmark_searchspeed(self):
+        # my very stupid benchmark
+        records = SampleTable.query.filter(
+                or_(SampleTable.description.like('%ab%'), SampleTable.description.like('%10%'))).order_by(
+                desc(SampleTable.added_time)).limit(500)
+        output = list()
+        for record in records:
+            second = SampleTable.query.filter(SampleTable.description.contains(record.title[0:1])).first()
+            if second:
+                aux = dict()
+                aux['id'] = second.id
+                aux['title'] = second.title
+                aux['description'] = second.description
+                aux['added_time'] = second.added_time
+                output.append(aux)
+        return output
 
 
-def __str__(self):
-    return '<SampleTable %r, %s>' % (self.id, self.title)
+    def __str__(self):
+        return '<SampleTable %r, %s>' % (self.id, self.title)
