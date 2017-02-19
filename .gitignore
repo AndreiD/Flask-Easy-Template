@@ -1,0 +1,17 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+
+# Database maybe
+# *.sqlite
+
+#log file maybe
+*.log
+
+# Project specific ignores
+*.swp
+*.bak
+
+local_config.py
+.idea/
+.vscode/
