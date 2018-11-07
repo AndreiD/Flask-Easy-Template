@@ -1,6 +1,7 @@
 Flask Easy-Template
 ========================
 
+## Sadly, I don't have time to maintain this. If you'd like to be a maintainer, drop me a message in an issue 
 
 #### Save time on your initial setup. This is a template app that includes the most important things you'll be probably using for your flask projects.
 
